@@ -19,7 +19,7 @@ public class Ship extends Actor
         setImage(image);
     }
 
-    double direction = 0; // in degrees
+    double direction = 270; // in degrees
     static int SPEED = 3;
     static int ROTATION_SPEED = 3;
 
