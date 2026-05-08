@@ -19,7 +19,7 @@ public class Projectile extends Actor
     {
         // Add your action code here.
 
-        if (Greentfoot.isKeyDown("space"))
+        if (Greenfoot.isKeyDown("space"))
         {
             move();
         }
