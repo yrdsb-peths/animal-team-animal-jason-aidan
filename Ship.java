@@ -42,6 +42,11 @@ public class Ship extends Actor
         {            
             direction += ROTATION_SPEED; // rotate right
         }
+
+        if (Greenfoot.isKeyDown("space"))
+        {
+            fire();
+        }
     }
 
     public void move()
@@ -51,5 +56,11 @@ public class Ship extends Actor
         int dy = (int)(SPEED * Math.sin(radians));
         setLocation(getX() + dx, getY() + dy);
 
+    }
+
+    public void fire()
+    {
+        // Projectile projectile = new Projectile((int) direction);
+        // getWorld().addObject(projectile, getX(), getY());
     }
 }

@@ -14,19 +14,35 @@ public class Projectile extends Actor
      */
 
     
+    static int SPEED = 5;
     double direction; // in degrees
 
-    public Projectile(int direction)
+    public Projectile(double direction)
     {
         this.direction = direction;
         // GreenfootImage image = new GreenfootImage("button-red.png");
         // setImage(image);
+        move();
+
+        if (isAtEdge())
+        {
+            getWorld().removeObject(this);
+        }
     }
 
     
     public void act()
     {
         // Add your action code here.
+
+    }
+
+    public void move()
+    {
+        double radians = Math.toRadians(direction);
+        int dx = (int)(SPEED * Math.cos(radians));
+        int dy = (int)(SPEED * Math.sin(radians));
+        setLocation(getX() + dx, getY() + dy);
 
     }
 
