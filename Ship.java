@@ -26,6 +26,8 @@ public class Ship extends Actor
     {
         // Add your action code here.
 
+        setRotation((int) direction);
+
         if (Greenfoot.isKeyDown("space"))
         {
             move();
@@ -34,12 +36,10 @@ public class Ship extends Actor
         if (Greenfoot.isKeyDown("a"))
         {
             direction -= 1; // rotate left
-            System.out.println("Direction: " + direction);
         }
         if (Greenfoot.isKeyDown("d"))
         {            
             direction += 1; // rotate right
-            System.out.println("Direction: " + direction);
         }
     }
 
