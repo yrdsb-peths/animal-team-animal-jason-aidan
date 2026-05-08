@@ -26,7 +26,7 @@ public class Ship extends Actor
     {
         // Add your action code here.
 
-        setRotation((int) direction);
+        setRotation((int) direction + 90);
 
         if (Greenfoot.isKeyDown("space"))
         {

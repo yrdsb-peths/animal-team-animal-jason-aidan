@@ -14,6 +14,16 @@ public class Projectile extends Actor
      */
 
     
+    double direction; // in degrees
+
+    public Projectile(int direction)
+    {
+        this.direction = direction;
+        // GreenfootImage image = new GreenfootImage("button-red.png");
+        // setImage(image);
+    }
+
+    
     public void act()
     {
         // Add your action code here.
