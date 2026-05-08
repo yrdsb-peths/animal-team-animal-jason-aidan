@@ -14,7 +14,7 @@ public class Asteroid extends Actor
      */
     public Asteroid()
     {
-        GreenfootImage image = new GreenfootImage("green-button.png");
+        GreenfootImage image = new GreenfootImage("button-green.png");
         setImage(image);
     }
     public void act()
