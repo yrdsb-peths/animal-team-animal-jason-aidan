@@ -1,4 +1,5 @@
 #Greenfoot project file
+class.Asteroid.image=button-green.png
 class.Ship.image=pik.png
 dependency1.from=MyWorld
 dependency1.to=Ship
