@@ -15,7 +15,7 @@ public class Ship extends Actor
     
     public Ship()
     {
-        GreenfootImage image = new GreenfootImage("button-green.png");
+        GreenfootImage image = new GreenfootImage("pik.png");
         setImage(image);
     }
 

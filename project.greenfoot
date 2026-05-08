@@ -1,11 +1,14 @@
 #Greenfoot project file
-class.Ship.image=button-green.png
-editor.fx.0.height=739
-editor.fx.0.width=816
-editor.fx.0.x=190
-editor.fx.0.y=256
+class.Ship.image=pik.png
+dependency1.from=MyWorld
+dependency1.to=Ship
+dependency1.type=UsesDependency
+editor.fx.0.height=736
+editor.fx.0.width=1382
+editor.fx.0.x=-8
+editor.fx.0.y=-8
 height=736
-package.numDependencies=0
+package.numDependencies=1
 package.numTargets=4
 project.charset=UTF-8
 publish.hasSource=false
