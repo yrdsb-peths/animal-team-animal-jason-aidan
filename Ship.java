@@ -12,19 +12,15 @@ public class Ship extends Actor
      * Act - do whatever the Ship wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-<<<<<<< Updated upstream
     
     public Ship()
     {
         GreenfootImage image = new GreenfootImage("button-green.png");
         setImage(image);
     }
-    public void act()
-    {
-        
-=======
-    static int SPEED = 10;
-    double direction = 0; // angle in degrees
+
+    double direction = 0; // in degrees
+    static int SPEED = 5;
 
     public void act()
     {
@@ -53,6 +49,6 @@ public class Ship extends Actor
         int dx = (int)(SPEED * Math.cos(radians));
         int dy = (int)(SPEED * Math.sin(radians));
         setLocation(getX() + dx, getY() + dy);
->>>>>>> Stashed changes
+
     }
 }
