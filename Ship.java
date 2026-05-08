@@ -20,7 +20,8 @@ public class Ship extends Actor
     }
 
     double direction = 0; // in degrees
-    static int SPEED = 5;
+    static int SPEED = 3;
+    static int ROTATION_SPEED = 3;
 
     public void act()
     {
@@ -28,18 +29,18 @@ public class Ship extends Actor
 
         setRotation((int) direction + 90);
 
-        if (Greenfoot.isKeyDown("space"))
+        if (Greenfoot.isKeyDown("w"))
         {
             move();
         }
 
         if (Greenfoot.isKeyDown("a"))
         {
-            direction -= 1; // rotate left
+            direction -= ROTATION_SPEED; // rotate left
         }
         if (Greenfoot.isKeyDown("d"))
         {            
-            direction += 1; // rotate right
+            direction += ROTATION_SPEED; // rotate right
         }
     }
 
