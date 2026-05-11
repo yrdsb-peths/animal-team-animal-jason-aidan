@@ -36,6 +36,22 @@ public class Ship extends Actor
 
         if (Greenfoot.isKeyDown("w"))
         {
+            if(getX() <= -20)
+            {
+                setLocation(510, getY());
+            }
+            if(getX() >= 520)
+            {
+                setLocation(-10, getY());
+            }
+            if(getY() <= -20)
+            {
+                setLocation(getX(), 610);
+            }
+            if(getY() >= 620)
+            {
+                setLocation(getX(), 10);
+            }
             move();
         }
 
