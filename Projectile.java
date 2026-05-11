@@ -20,20 +20,20 @@ public class Projectile extends Actor
     public Projectile(double direction)
     {
         this.direction = direction;
-        // GreenfootImage image = new GreenfootImage("button-red.png");
-        // setImage(image);
+        //GreenfootImage image = new GreenfootImage("button-red.png");
+        //setImage(image);
+
+    }
+
+    
+    public void act()
+    {
         move();
 
         if (isAtEdge())
         {
             getWorld().removeObject(this);
         }
-    }
-
-    
-    public void act()
-    {
-        // Add your action code here.
 
     }
 

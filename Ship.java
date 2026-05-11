@@ -60,7 +60,7 @@ public class Ship extends Actor
 
     public void fire()
     {
-        // Projectile projectile = new Projectile((int) direction);
-        // getWorld().addObject(projectile, getX(), getY());
+        Projectile projectile = new Projectile((int) direction);
+        getWorld().addObject(projectile, getX(), getY());
     }
 }
