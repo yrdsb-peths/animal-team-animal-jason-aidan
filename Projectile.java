@@ -14,26 +14,27 @@ public class Projectile extends Actor
      */
 
     
-    static int SPEED = 5;
+    static int SPEED = 10;
     double direction; // in degrees
 
     public Projectile(double direction)
     {
         this.direction = direction;
-        // GreenfootImage image = new GreenfootImage("button-red.png");
-        // setImage(image);
+        GreenfootImage image = new GreenfootImage("button-green.png");
+        image.scale(10, 10);
+        setImage(image);
+
+    }
+
+    
+    public void act()
+    {
         move();
 
         if (isAtEdge())
         {
             getWorld().removeObject(this);
         }
-    }
-
-    
-    public void act()
-    {
-        // Add your action code here.
 
     }
 

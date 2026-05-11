@@ -20,6 +20,9 @@ public class Ship extends Actor
     }
 
     double direction = 270; // in degrees
+    double fireCooldown = 0; // time until we can fire again
+
+    static int FIRE_RATE = 10; // cooldown time in act cycles
     static int SPEED = 3;
     static int ROTATION_SPEED = 3;
 
@@ -28,6 +31,8 @@ public class Ship extends Actor
         // Add your action code here.
 
         setRotation((int) direction + 90);
+
+        fireCooldown = Math.max(0, fireCooldown - 1);
 
         if (Greenfoot.isKeyDown("w"))
         {
@@ -60,7 +65,12 @@ public class Ship extends Actor
 
     public void fire()
     {
-        // Projectile projectile = new Projectile((int) direction);
-        // getWorld().addObject(projectile, getX(), getY());
+        if (fireCooldown > 0)
+        {
+            return; 
+        }
+        Projectile projectile = new Projectile((int) direction);
+        getWorld().addObject(projectile, getX(), getY());
+        fireCooldown = FIRE_RATE; 
     }
 }
