@@ -13,32 +13,26 @@ public class Asteroid extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
-    int speed = 6;
+    int speed = 3;
     double direction;
     
-    static int angleVariation = 30; // how much it varies from center 
+    static int ANGLE_VARIATION = 30; // how much it varies from center 
     
-    public Asteroid(int x, int y)
+    public Asteroid(int x, int y, double direction)
     {
         GreenfootImage image = new GreenfootImage("button-green.png");
         setImage(image);
-        
-        //double angle = Math.atan((double)(y - getWorld().getHeight() / 2.0) / (double)(x - getWorld().getWidth() / 2.0));
-        // if (x < getWorld().getWidth() / 2.0)
-        // {
-        //     // arctan's range is only -90 to 90, so we need to add 180 if it's coming from the left
-        //     angle += Math.PI; 
-        // }
-        // this.direction = angle * 180 / Math.PI + Greenfoot.getRandomNumber(angleVariation * 2) - angleVariation; // convert to degrees
+    
+        this.direction = direction;
     }
     public void act()
     {
         // Add your action code here.
-        // move();
-        // if (isAtEdge())
-        // {
-        //     getWorld().removeObject(this);
-        // }
+        move();
+        if (getX() * getX() + getY() * getY() > (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS) * (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS))
+        {
+            getWorld().removeObject(this);
+        }
     }
     public void move()
     {

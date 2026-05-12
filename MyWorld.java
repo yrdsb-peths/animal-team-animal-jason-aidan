@@ -2,15 +2,16 @@ import greenfoot.*;
 
 public class MyWorld extends World {
 
-    static int ASTEROID_SPAWN_RATE = 10;
-    static int invalidSpawnRadius = 150; // how close to the center we can spawn asteroids
-    static int outerSpawnRadius = 200; // how far from the center we can spawn asteroids
+    static int WIDTH = 500;
+    static int HEIGHT = 500;
+    static int ASTEROID_SPAWN_RATE = 100;
+    static int OUTER_SPAWN_RADIUS = 400; // how far from the center we can spawn asteroids
     int time = 0;
 
     public MyWorld() {
-        super(500, 600, 1, false);
+        super(WIDTH, HEIGHT, 1, false);
         Ship ship = new Ship();
-        addObject(ship, 250, 300);
+        addObject(ship, WIDTH / 2, HEIGHT / 2);
     }
 
     public void act() {
@@ -21,15 +22,13 @@ public class MyWorld extends World {
     }
 
     private void spawnAsteroid() {
-        int x = Greenfoot.getRandomNumber(getWidth() + 2 * outerSpawnRadius) - outerSpawnRadius;
-        int y = Greenfoot.getRandomNumber(getHeight() + 2 * outerSpawnRadius) - outerSpawnRadius;
-        while ((x-getWidth()/2)*(x-getWidth()/2) + (y-getHeight()/2)*(y-getHeight()/2) < invalidSpawnRadius * invalidSpawnRadius)
-        {
-            // don't spawn too close to the center where the ship is
-            x = Greenfoot.getRandomNumber(getWidth() + 2 * outerSpawnRadius) - outerSpawnRadius;
-            y = Greenfoot.getRandomNumber(getHeight() + 2 * outerSpawnRadius) - outerSpawnRadius;
-        }
-        Asteroid asteroid = new Asteroid(x, y);
+        double direction = Greenfoot.getRandomNumber(360); // random direction in degrees
+
+        int x = WIDTH/2 + (int)(OUTER_SPAWN_RADIUS * Math.cos(Math.toRadians(direction)));
+        int y = HEIGHT/2  + (int)(OUTER_SPAWN_RADIUS * Math.sin(Math.toRadians(direction)));
+        
+
+        Asteroid asteroid = new Asteroid(x, y, direction-180);
         addObject(asteroid, x, y);
     }
 }
