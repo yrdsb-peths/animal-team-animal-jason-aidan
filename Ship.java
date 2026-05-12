@@ -71,19 +71,19 @@ public class Ship extends Actor
     {
         if(getX() <= -20)
             {
-                setLocation(510, getY());
+                setLocation((MyWorld.WIDTH)+10, getY());
             }
-        if(getX() >= 520)
+        if(getX() >= MyWorld.WIDTH + 20)
         {
             setLocation(-10, getY());
         }
         if(getY() <= -20)
         {
-            setLocation(getX(), 610);
+            setLocation(getX(), MyWorld.HEIGHT+10);
         }
-        if(getY() >= 620)
+        if(getY() >= MyWorld.HEIGHT+20)
         {
-            setLocation(getX(), 10);
+            setLocation(getX(), -10);
         }
     }
     
