@@ -15,21 +15,23 @@ public class Asteroid extends Actor
     
     int speed = 3;
     double direction;
-    
+    static int WIDTH = MyWorld.WIDTH;
+    static int HEIGHT = MyWorld.HEIGHT;
     static int ANGLE_VARIATION = 30; // how much it varies from center 
     
     public Asteroid(int x, int y, double direction)
     {
-        GreenfootImage image = new GreenfootImage("button-green.png");
+        GreenfootImage image = new GreenfootImage("asteroid_sprite.png");
         setImage(image);
-    
+        image.scale(100,100);
         this.direction = direction;
     }
     public void act()
     {
         // Add your action code here.
         move();
-        if (getX() * getX() + getY() * getY() > (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS) * (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS))
+//        getX() * getX() + getY() * getY() > (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS) * (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS)
+        if (getX() < -100 || getX() > WIDTH+100 || getY() < -100 || getY() > HEIGHT+100)
         {
             getWorld().removeObject(this);
         }
