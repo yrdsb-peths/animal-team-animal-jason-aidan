@@ -31,7 +31,7 @@ public class Projectile extends Actor
     {
         move();
 
-        if (isAtEdge())
+        if (getX() < -5 || getX() > 505 || getY() < -5 || getY() > 605)
         {
             getWorld().removeObject(this);
         }

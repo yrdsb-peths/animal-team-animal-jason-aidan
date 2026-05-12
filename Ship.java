@@ -44,8 +44,7 @@ public class Ship extends Actor
                 SPEED += 0.1;
             }
             move();
-        } else
-        {
+        } else{
             if(SPEED > 0.0)
             {
                 SPEED -= 0.05;
