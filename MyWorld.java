@@ -9,7 +9,7 @@ public class MyWorld extends World {
     int time = 0;
 
     public MyWorld() {
-        super(WIDTH, HEIGHT, 1, false);
+        super(500, 600, 1, false);
         Ship ship = new Ship();
         addObject(ship, WIDTH / 2, HEIGHT / 2);
     }

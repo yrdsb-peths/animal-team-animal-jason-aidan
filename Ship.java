@@ -15,7 +15,7 @@ public class Ship extends Actor
     
     public Ship()
     {
-        GreenfootImage image = new GreenfootImage("pik.png");
+        GreenfootImage image = new GreenfootImage("ship_image_bold.png");
         setImage(image);
     }
 
@@ -23,8 +23,9 @@ public class Ship extends Actor
     double fireCooldown = 0; // time until we can fire again
 
     static int FIRE_RATE = 10; // cooldown time in act cycles
-    static int SPEED = 3;
-    static int ROTATION_SPEED = 3;
+    static double SPEED = 0.0;
+    static double MAXSPEED = 8.0;
+    static int ROTATION_SPEED = 5;
 
     public void act()
     {
@@ -33,24 +34,20 @@ public class Ship extends Actor
         setRotation((int) direction + 90);
 
         fireCooldown = Math.max(0, fireCooldown - 1);
-
+        
+        detectPosition();
+        
         if (Greenfoot.isKeyDown("w"))
         {
-            if(getX() <= -20)
+            if(SPEED <= MAXSPEED)
             {
-                setLocation(510, getY());
+                SPEED += 0.1;
             }
-            if(getX() >= 520)
+            move();
+        } else{
+            if(SPEED > 0.0)
             {
-                setLocation(-10, getY());
-            }
-            if(getY() <= -20)
-            {
-                setLocation(getX(), 610);
-            }
-            if(getY() >= 620)
-            {
-                setLocation(getX(), 10);
+                SPEED -= 0.05;
             }
             move();
         }
@@ -70,6 +67,26 @@ public class Ship extends Actor
         }
     }
 
+    public void detectPosition()
+    {
+        if(getX() <= -20)
+            {
+                setLocation(510, getY());
+            }
+        if(getX() >= 520)
+        {
+            setLocation(-10, getY());
+        }
+        if(getY() <= -20)
+        {
+            setLocation(getX(), 610);
+        }
+        if(getY() >= 620)
+        {
+            setLocation(getX(), 10);
+        }
+    }
+    
     public void move()
     {
         double radians = Math.toRadians(direction);
