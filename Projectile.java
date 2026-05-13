@@ -20,8 +20,8 @@ public class Projectile extends Actor
     public Projectile(double direction)
     {
         this.direction = direction;
-        GreenfootImage image = new GreenfootImage("button-green.png");
-        image.scale(10, 10);
+        GreenfootImage image = new GreenfootImage("projectile_standard.png");
+        image.scale(15, 15);
         setImage(image);
 
     }
