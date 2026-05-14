@@ -2,8 +2,14 @@ import greenfoot.*;
 
 public class MyWorld extends World {
 
-    static int WIDTH = 600;
-    static int HEIGHT = 600;
+
+    static final int SMALL = 0;
+    static final int MEDIUM = 1;
+    static final int LARGE = 2;
+
+    static final int WIDTH = 600;
+    static final int HEIGHT = 600;
+
     static int ASTEROID_SPAWN_RATE = 500;
     static int OUTER_SPAWN_RADIUS = 350; // how far from the center we can spawn asteroids
     int time = 0;
@@ -35,7 +41,7 @@ public class MyWorld extends World {
         int y = HEIGHT/2  + (int)(OUTER_SPAWN_RADIUS * Math.sin(Math.toRadians(direction)));
         
 
-        Asteroid asteroid = new Asteroid(x, y, direction-180);
+        Asteroid asteroid = new Asteroid(x, y, direction-180, LARGE);
         addObject(asteroid, x, y);
     }
 }
