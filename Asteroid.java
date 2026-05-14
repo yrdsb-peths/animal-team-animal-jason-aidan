@@ -19,43 +19,55 @@ public class Asteroid extends Actor
 
     static final int WIDTH = MyWorld.WIDTH;
     static final int HEIGHT = MyWorld.HEIGHT;
+
+    static final int ANIMATION_INTERVAL = 5;
     
     double speed;
     double rotation = Greenfoot.getRandomNumber(360);
     int rotation_turn = Greenfoot.getRandomNumber(3);
     int health;
     int asteroidType;
-    int imageNum = 0;
+    int animationDelay = 0;
     double direction;
+
+    GreenfootImage[] hitAnimation;
 
     
     public Asteroid(int x, int y, double direction, int type)
     {
-        GreenfootImage image = new GreenfootImage("asteroid_sprite.png");
-        setImage(image);
-        image.scale(100,100);
+        GreenfootImage[] hitAnimation = {
+        new GreenfootImage("asteroid_sprite.png"),
+        new GreenfootImage("asteroid_hit_standard.png")
+        };
 
         this.direction = direction;
         this.asteroidType = type;
+        this.animationDelay = 0;
+        this.hitAnimation = hitAnimation;
 
         if (type == SMALL)
         {
-            image.scale(50, 50);
+            hitAnimation[0].scale(50, 50);
+            hitAnimation[1].scale(50, 50);
             health = 2;
             speed = 3.0;
         }
         else if (type == MEDIUM)
         {
-            image.scale(75, 75);
+            hitAnimation[0].scale(75, 75);
+            hitAnimation[1].scale(75, 75);
             health = 7;
             speed = 2.0;
 
         } else if (type == LARGE)
         {
-            image.scale(130, 130);
+            hitAnimation[0].scale(130, 130);
+            hitAnimation[1].scale(130, 130);
             health = 13;
             speed = 1.5;
         }
+
+        setImage(hitAnimation[0]);
 
     }
     public void act()
@@ -72,6 +84,15 @@ public class Asteroid extends Actor
         else if (rotation_turn == 1)
         {
             rotation -= 0.5;
+        }
+
+        if (animationDelay > 0)
+        {
+            animationDelay--;
+            if (animationDelay == 0)
+            {
+                setImage(hitAnimation[0]);
+            }
         }
 
         if(getX() < -100 || getX() > WIDTH+100 || getY() < -100 || getY() > HEIGHT+100)
@@ -102,39 +123,8 @@ public class Asteroid extends Actor
         {
             removeTouching(Projectile.class);
             health -= 1;
-            GreenfootImage image = new GreenfootImage("asteroid_hit_standard.png");
-            if(imageNum == 0)
-            {
-                setImage("asteroid_hit_standard.png");
-                if (asteroidType == SMALL)
-                {
-                    image.scale(50, 50);
-                }
-                    else if (asteroidType == MEDIUM)
-                {
-                    image.scale(75, 75);
-                } else if (asteroidType == LARGE)
-                {
-                    image.scale(130, 130);
-                }
-                imageNum = 1;
-            }
-            else
-            {
-                imageNum = 0;
-                setImage("asteroid_sprite.png");
-                if (asteroidType == SMALL)
-                {
-                    image.scale(50, 50);
-                }
-                    else if (asteroidType == MEDIUM)
-                {
-                    image.scale(75, 75);
-                } else if (asteroidType == LARGE)
-                {
-                    image.scale(130, 130);
-                }
-            }
+            setImage(hitAnimation[1]);
+            animationDelay = ANIMATION_INTERVAL;
         }
     }
 
