@@ -24,7 +24,7 @@ public class MyWorld extends World {
         }
         if(time % 6000 == 0)
         {
-            ASTEROID_SPAWN_RATE *= 0.8;
+            ASTEROID_SPAWN_RATE -= 10;
         }
     }
 
