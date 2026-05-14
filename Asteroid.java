@@ -12,22 +12,50 @@ public class Asteroid extends Actor
      * Act - do whatever the Asteroid wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+
+    static final int SMALL = 0;
+    static final int MEDIUM = 1;
+    static final int LARGE = 2;
+
+    static final int WIDTH = MyWorld.WIDTH;
+    static final int HEIGHT = MyWorld.HEIGHT;
     
-    int speed = 2;
+    double speed;
     double rotation = Greenfoot.getRandomNumber(360);
     int rotation_turn = Greenfoot.getRandomNumber(3);
     int health;
+    int asteroidType;
     double direction;
-    static int WIDTH = MyWorld.WIDTH;
-    static int HEIGHT = MyWorld.HEIGHT;
+
     
-    public Asteroid(int x, int y, double direction)
+    public Asteroid(int x, int y, double direction, int type)
     {
         GreenfootImage image = new GreenfootImage("asteroid_sprite.png");
         setImage(image);
         image.scale(100,100);
+
         this.direction = direction;
-        this.health = 10;
+        this.asteroidType = type;
+
+        if (type == SMALL)
+        {
+            image.scale(50, 50);
+            health = 2;
+            speed = 4.0;
+        }
+        else if (type == MEDIUM)
+        {
+            image.scale(75, 75);
+            health = 7;
+            speed = 2.0;
+
+        } else if (type == LARGE)
+        {
+            image.scale(130, 130);
+            health = 13;
+            speed = 1.5;
+        }
+
     }
     public void act()
     {
@@ -45,8 +73,14 @@ public class Asteroid extends Actor
             rotation -= 0.5;
         }
 
-        if(health <= 0 || getX() < -100 || getX() > WIDTH+100 || getY() < -100 || getY() > HEIGHT+100)
+        if(getX() < -100 || getX() > WIDTH+100 || getY() < -100 || getY() > HEIGHT+100)
         {
+
+            getWorld().removeObject(this);
+
+        } else if (health <= 0)
+        {
+            splitAsteroid();
             getWorld().removeObject(this);
         }
 
@@ -69,5 +103,19 @@ public class Asteroid extends Actor
             health -= 1;
 
         }
+    }
+
+    private void splitAsteroid() {
+
+        if (asteroidType == SMALL)
+        {
+            return; // small asteroids don't split
+        }
+
+        int type = asteroidType-1;
+
+        getWorld().addObject(new Asteroid(getX(), getY(), direction+30, type), getX(), getY());
+
+        getWorld().addObject(new Asteroid(getX(), getY(), direction-30, type), getX(), getY());
     }
 }
