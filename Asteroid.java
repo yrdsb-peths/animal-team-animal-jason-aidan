@@ -42,7 +42,7 @@ public class Asteroid extends Actor
         {
             image.scale(50, 50);
             health = 2;
-            speed = 4.0;
+            speed = 3.0;
         }
         else if (type == MEDIUM)
         {
