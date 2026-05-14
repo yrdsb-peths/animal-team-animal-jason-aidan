@@ -25,6 +25,7 @@ public class Asteroid extends Actor
     int rotation_turn = Greenfoot.getRandomNumber(3);
     int health;
     int asteroidType;
+    int imageNum = 0;
     double direction;
 
     
@@ -101,7 +102,39 @@ public class Asteroid extends Actor
         {
             removeTouching(Projectile.class);
             health -= 1;
-
+            GreenfootImage image = new GreenfootImage("asteroid_hit_standard.png");
+            if(imageNum == 0)
+            {
+                setImage("asteroid_hit_standard.png");
+                if (asteroidType == SMALL)
+                {
+                    image.scale(50, 50);
+                }
+                    else if (asteroidType == MEDIUM)
+                {
+                    image.scale(75, 75);
+                } else if (asteroidType == LARGE)
+                {
+                    image.scale(130, 130);
+                }
+                imageNum = 1;
+            }
+            else
+            {
+                imageNum = 0;
+                setImage("asteroid_sprite.png");
+                if (asteroidType == SMALL)
+                {
+                    image.scale(50, 50);
+                }
+                    else if (asteroidType == MEDIUM)
+                {
+                    image.scale(75, 75);
+                } else if (asteroidType == LARGE)
+                {
+                    image.scale(130, 130);
+                }
+            }
         }
     }
 
