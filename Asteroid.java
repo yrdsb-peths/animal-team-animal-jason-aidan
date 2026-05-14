@@ -15,7 +15,6 @@ public class Asteroid extends Actor
     
     int speed = 2;
     int health = 10;
-    
     double direction;
     static int WIDTH = MyWorld.WIDTH;
     static int HEIGHT = MyWorld.HEIGHT;
@@ -31,8 +30,7 @@ public class Asteroid extends Actor
     {
         // Add your action code here.
         move();
-        collide();
-
+//        getX() * getX() + getY() * getY() > (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS) * (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS)
         if (health <= 0 || getX() < -100 || getX() > WIDTH+100 || getY() < -100 || getY() > HEIGHT+100)
         {
             getWorld().removeObject(this);

@@ -20,8 +20,8 @@ public class Projectile extends Actor
     public Projectile(double direction)
     {
         this.direction = direction;
-        GreenfootImage image = new GreenfootImage("button-green.png");
-        image.scale(10, 10);
+        GreenfootImage image = new GreenfootImage("projectile_standard.png");
+        image.scale(15, 15);
         setImage(image);
 
     }
@@ -31,7 +31,7 @@ public class Projectile extends Actor
     {
         move();
 
-        if (getX() < -5 || getX() > 505 || getY() < -5 || getY() > 605)
+        if (getX() < -5 || getX() > MyWorld.WIDTH+5 || getY() < -5 || getY() > MyWorld.HEIGHT+5)
         {
             getWorld().removeObject(this);
         }
