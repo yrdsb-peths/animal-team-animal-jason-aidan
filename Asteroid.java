@@ -16,10 +16,10 @@ public class Asteroid extends Actor
     int speed = 3;
     double rotation = Greenfoot.getRandomNumber(360);
     int rotation_turn = Greenfoot.getRandomNumber(3);
+    int health = 10;
     double direction;
     static int WIDTH = MyWorld.WIDTH;
     static int HEIGHT = MyWorld.HEIGHT;
-    static int ANGLE_VARIATION = 30; // how much it varies from center 
     
     public Asteroid(int x, int y, double direction)
     {
@@ -42,7 +42,7 @@ public class Asteroid extends Actor
             rotation -= 0.5;
         }
         //getX() * getX() + getY() * getY() > (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS) * (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS)
-        if (getX() < -100 || getX() > WIDTH+100 || getY() < -100 || getY() > HEIGHT+100)
+        if(health <= 0 || getX() < -100 || getX() > WIDTH+100 || getY() < -100 || getY() > HEIGHT+100)
         {
             getWorld().removeObject(this);
         }
@@ -54,5 +54,15 @@ public class Asteroid extends Actor
         int dy = (int)(speed * Math.sin(radians));
         setLocation(getX() + dx, getY() + dy);
 
+    }
+
+    public void collide()
+    {
+        if (isTouching(Projectile.class))
+        {
+            removeTouching(Projectile.class);
+            health -= 1;
+
+        }
     }
 }
