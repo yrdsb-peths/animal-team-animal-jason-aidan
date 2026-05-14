@@ -13,7 +13,7 @@ public class Asteroid extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
-    int speed = 3;
+    int speed = 2;
     double rotation = Greenfoot.getRandomNumber(360);
     int rotation_turn = Greenfoot.getRandomNumber(3);
     int health = 10;

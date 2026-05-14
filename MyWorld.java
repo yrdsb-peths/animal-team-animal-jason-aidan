@@ -13,13 +13,18 @@ public class MyWorld extends World {
         super.setBackground("black_screen.jpeg");
         Ship ship = new Ship();
         addObject(ship, WIDTH / 2, HEIGHT / 2);
-
+        ASTEROID_SPAWN_RATE = 500;
+        time = 0;
     }
 
     public void act() {
         time++;
-        if (time % ASTEROID_SPAWN_RATE == 0) {
+        if (time % ASTEROID_SPAWN_RATE == 0 || time == 1) {
             spawnAsteroid();
+        }
+        if(time % 6000 == 0)
+        {
+            ASTEROID_SPAWN_RATE *= 0.8;
         }
     }
 
