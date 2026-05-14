@@ -4,7 +4,7 @@ public class MyWorld extends World {
 
     static int WIDTH = 600;
     static int HEIGHT = 600;
-    static int ASTEROID_SPAWN_RATE = 100;
+    static int ASTEROID_SPAWN_RATE = 500;
     static int OUTER_SPAWN_RADIUS = 350; // how far from the center we can spawn asteroids
     int time = 0;
 
