@@ -41,13 +41,13 @@ public class Ship extends Actor
         {
             if(SPEED <= MAXSPEED)
             {
-                SPEED += 0.1;
+                SPEED += 0.2;
             }
             move();
         } else{
             if(SPEED > 0.0)
             {
-                SPEED -= 0.05;
+                SPEED -= 0.1;
             }
             move();
         }
