@@ -97,8 +97,8 @@ public class Asteroid extends Actor
 
         if(getX() < -100 || getX() > WIDTH+100 || getY() < -100 || getY() > HEIGHT+100)
         {
-
-            getWorld().removeObject(this);
+            direction = direction + 180;
+            //getWorld().removeObject(this);
 
         } else if (health <= 0)
         {
