@@ -14,7 +14,7 @@ public class Asteroid extends Actor
      */
     
     int speed = 3;
-    double rotation = 0.0;
+    double rotation = Greenfoot.getRandomNumber(360);
     int rotation_turn = Greenfoot.getRandomNumber(3);
     double direction;
     static int WIDTH = MyWorld.WIDTH;
@@ -40,10 +40,6 @@ public class Asteroid extends Actor
         else if (rotation_turn == 1)
         {
             rotation -= 0.5;
-        }
-        else
-        {
-            rotation = 0.0;
         }
         //getX() * getX() + getY() * getY() > (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS) * (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS)
         if (getX() < -100 || getX() > WIDTH+100 || getY() < -100 || getY() > HEIGHT+100)

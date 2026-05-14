@@ -1,6 +1,7 @@
 #Greenfoot project file
-class.Asteroid.image=button-green.png
-class.Ship.image=pik.png
+class.Asteroid.image=asteroid_sprite.png
+class.Projectile.image=projectile_standard.png
+class.Ship.image=ship_image_bold.png
 dependency1.from=MyWorld
 dependency1.to=Ship
 dependency1.type=UsesDependency
@@ -19,10 +20,10 @@ dependency5.type=UsesDependency
 dependency6.from=Projectile
 dependency6.to=MyWorld
 dependency6.type=UsesDependency
-editor.fx.0.height=736
-editor.fx.0.width=1382
-editor.fx.0.x=-8
-editor.fx.0.y=-8
+editor.fx.0.height=739
+editor.fx.0.width=816
+editor.fx.0.x=100
+editor.fx.0.y=100
 height=736
 package.numDependencies=6
 package.numTargets=4
