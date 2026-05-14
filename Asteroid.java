@@ -16,7 +16,7 @@ public class Asteroid extends Actor
     int speed = 2;
     double rotation = Greenfoot.getRandomNumber(360);
     int rotation_turn = Greenfoot.getRandomNumber(3);
-    int health = 10;
+    int health;
     double direction;
     static int WIDTH = MyWorld.WIDTH;
     static int HEIGHT = MyWorld.HEIGHT;
@@ -27,11 +27,14 @@ public class Asteroid extends Actor
         setImage(image);
         image.scale(100,100);
         this.direction = direction;
+        this.health = 10;
     }
     public void act()
     {
         // Add your action code here.
         move();
+        collide();
+
         setRotation((int)rotation);
         if(rotation_turn == 0)
         {
@@ -41,11 +44,13 @@ public class Asteroid extends Actor
         {
             rotation -= 0.5;
         }
-        //getX() * getX() + getY() * getY() > (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS) * (MyWorld.WIDTH / 2.0 + MyWorld.OUTER_SPAWN_RADIUS)
+
         if(health <= 0 || getX() < -100 || getX() > WIDTH+100 || getY() < -100 || getY() > HEIGHT+100)
         {
             getWorld().removeObject(this);
         }
+
+       
     }
     public void move()
     {
