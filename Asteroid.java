@@ -135,7 +135,7 @@ public class Asteroid extends Actor
 
 
         List<Ship> ships = getObjectsInRange(hitboxRadius, Ship.class);
-        if (ships != null && !ships.isEmpty()) {
+        if (ships != null && !ships.isEmpty() && !Ship.practice) {
            MyWorld.loseGame();
         }
     }

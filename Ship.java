@@ -21,7 +21,7 @@ public class Ship extends Actor
 
     double direction = 270; // in degrees
     double fireCooldown = 0; // time until we can fire again
-    boolean practice = false;
+    static boolean practice = false;
     static int FIRE_RATE = 10; // cooldown time in act cycles
     static double SPEED = 0.0;
     static double MAXSPEED = 5.0;
