@@ -72,11 +72,6 @@ public class Ship extends Actor
             GreenfootImage image = new GreenfootImage("ship_image_practice.png");
             setImage(image);
         }
-        
-        if (isTouching(Asteroid.class) && practice == false)
-        {
-            MyWorld.loseGame();
-        }
     }
 
     public void detectPosition()

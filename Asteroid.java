@@ -1,4 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
+
 
 /**
  * Write a description of class Asteroid here.
@@ -28,6 +30,7 @@ public class Asteroid extends Actor
     int health;
     int asteroidType;
     int animationDelay = 0;
+    int hitboxRadius;
     double direction;
 
     GreenfootImage[] hitAnimation;
@@ -51,6 +54,7 @@ public class Asteroid extends Actor
             hitAnimation[1].scale(50, 50);
             health = 2;
             speed = 3.0;
+            hitboxRadius = 35;
         }
         else if (type == MEDIUM)
         {
@@ -58,6 +62,7 @@ public class Asteroid extends Actor
             hitAnimation[1].scale(75, 75);
             health = 7;
             speed = 2.0;
+            hitboxRadius = 50;
 
         } else if (type == LARGE)
         {
@@ -65,6 +70,7 @@ public class Asteroid extends Actor
             hitAnimation[1].scale(130, 130);
             health = 13;
             speed = 1.5;
+            hitboxRadius = 80;
         }
 
         setImage(hitAnimation[0]);
@@ -125,6 +131,12 @@ public class Asteroid extends Actor
             health -= 1;
             setImage(hitAnimation[1]);
             animationDelay = ANIMATION_INTERVAL;
+        }
+
+
+        List<Ship> ships = getObjectsInRange(hitboxRadius, Ship.class);
+        if (ships != null && !ships.isEmpty()) {
+           MyWorld.loseGame();
         }
     }
 
