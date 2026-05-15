@@ -21,10 +21,10 @@ public class Ship extends Actor
 
     double direction = 270; // in degrees
     double fireCooldown = 0; // time until we can fire again
-
+    boolean practice = false;
     static int FIRE_RATE = 10; // cooldown time in act cycles
     static double SPEED = 0.0;
-    static double MAXSPEED = 8.0;
+    static double MAXSPEED = 5.0;
     static int ROTATION_SPEED = 5;
 
     public void act()
@@ -64,6 +64,13 @@ public class Ship extends Actor
         if (Greenfoot.isKeyDown("space"))
         {
             fire();
+        }
+
+        if(Greenfoot.isKeyDown("p"))
+        {
+            practice = true;
+            GreenfootImage image = new GreenfootImage("ship_image_practice.png");
+            setImage(image);
         }
     }
 

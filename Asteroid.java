@@ -142,15 +142,17 @@ public class Asteroid extends Actor
 
     private void splitAsteroid() {
 
+        MyWorld.score += (asteroidType + 1) * 10;
+
         if (asteroidType == SMALL)
         {
             return; // small asteroids don't split
         }
 
+        
+
         int type = asteroidType-1;
-
         getWorld().addObject(new Asteroid(getX(), getY(), direction+30, type), getX(), getY());
-
         getWorld().addObject(new Asteroid(getX(), getY(), direction-30, type), getX(), getY());
     }
 }
