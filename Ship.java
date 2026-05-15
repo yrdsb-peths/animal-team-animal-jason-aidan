@@ -65,11 +65,6 @@ public class Ship extends Actor
         {
             fire();
         }
-
-        if (isTouching(Asteroid.class))
-        {
-            MyWorld.loseGame();
-        }
     }
 
     public void detectPosition()
