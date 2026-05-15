@@ -11,8 +11,13 @@ public class MyWorld extends World {
     static final int HEIGHT = 600;
 
     static int asteroidSpawnRate = 300;
-    static final int OUTER_SPAWN_RADIUS = 350; 
-    int time = 0;
+    static final int OUTER_SPAWN_RADIUS = 350;
+
+
+    static int time = 0;
+    static int score = 0;
+
+    Label scoreLabel;
 
     public MyWorld() {
         super(WIDTH, HEIGHT, 1, false);
@@ -21,6 +26,10 @@ public class MyWorld extends World {
         addObject(ship, WIDTH / 2, HEIGHT / 2);
         asteroidSpawnRate = 300;
         time = 0;
+        score = 0;
+
+        scoreLabel = new Label("Score: 0", 20);
+        addObject(scoreLabel, 40, 30);
     }
 
     public void act() {
@@ -32,6 +41,9 @@ public class MyWorld extends World {
         {
             asteroidSpawnRate -= 10;
         }
+
+        scoreLabel.setValue("Score: " + score);
+
     }
 
     private void spawnAsteroid() {
