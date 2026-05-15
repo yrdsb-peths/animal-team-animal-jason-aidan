@@ -24,7 +24,7 @@ public class Ship extends Actor
 
     static int FIRE_RATE = 10; // cooldown time in act cycles
     static double SPEED = 0.0;
-    static double MAXSPEED = 8.0;
+    static double MAXSPEED = 5.0;
     static int ROTATION_SPEED = 5;
 
     public void act()
