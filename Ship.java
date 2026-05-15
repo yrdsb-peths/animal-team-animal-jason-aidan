@@ -17,6 +17,7 @@ public class Ship extends Actor
     {
         GreenfootImage image = new GreenfootImage("ship_image_bold.png");
         setImage(image);
+        practice = false;
     }
 
     double direction = 270; // in degrees
