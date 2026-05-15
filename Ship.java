@@ -69,6 +69,8 @@ public class Ship extends Actor
         if(Greenfoot.isKeyDown("p"))
         {
             practice = true;
+            GreenfootImage image = new GreenfootImage("ship_image_practice.png");
+            setImage(image);
         }
         
         if (isTouching(Asteroid.class) && practice == false)
